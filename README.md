@@ -1,5 +1,7 @@
 # Mario Car Driving
 
+Oude repository op https://github.com/0845855/PRG08. Door allerlei errors en code wijzigingen bij het commiten heb ik deze nieuwe repository maar gemaakt.
+
 ## Besturing
 
 - SPATIE = Springen
