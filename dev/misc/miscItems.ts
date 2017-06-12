@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 abstract class MiscItems {
-=======
-class MiscItems {
->>>>>>> origin/master
 
     public speed:number;
     public div:HTMLElement;
@@ -10,20 +6,11 @@ class MiscItems {
     public x:number;
     public y:number;
 
-<<<<<<< HEAD
-
-=======
-            
->>>>>>> origin/master
     constructor(item: string, parent:HTMLElement) {
         this.div = document.createElement(item);
         parent.appendChild(this.div);
 
         this.speed = -4;
-<<<<<<< HEAD
-=======
-
->>>>>>> origin/master
     }
 
     public draw():void {

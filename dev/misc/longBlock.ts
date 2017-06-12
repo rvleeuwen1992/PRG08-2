@@ -1,6 +1,5 @@
 /// <reference path="miscItems.ts" />
 
-<<<<<<< HEAD
 namespace LongBlock{
     export class Block extends MiscItems {
 
@@ -24,9 +23,8 @@ namespace LongBlock{
         }
     }
 }
-=======
 
-class LongBlock extends MiscItems {
+/*class LongBlock extends MiscItems {
 
     public x:number;
     public y:number;
@@ -44,5 +42,4 @@ class LongBlock extends MiscItems {
         this.width = 64;
         this.height = 32;
     }
-}
->>>>>>> origin/master
+}*/

@@ -11,18 +11,13 @@
     private constructor() {
         let container = document.getElementById("container");
         this.car = new Car(container);
-<<<<<<< HEAD
         this.block = new Block.Block(container);
         this.longblock = new LongBlock.Block(container);
         this.coin = new Coin(container);
         this.cloud = new Cloud(container, this.car);
-
-        
-=======
-        this.block = new Block(container);
-        this.longblock = new LongBlock(container);
+        this.block = new Block.Block(container);
+        this.longblock = new LongBlock.Block(container);
         this.coin = new Coin(container);
->>>>>>> origin/master
 
         requestAnimationFrame(() => this.gameLoop());
     }
@@ -32,10 +27,7 @@
         this.block.draw();
         this.longblock.draw();
         this.coin.draw();
-<<<<<<< HEAD
         this.cloud.draw();
-=======
->>>>>>> origin/master
 
         requestAnimationFrame(() => this.gameLoop());
 

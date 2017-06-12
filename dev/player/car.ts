@@ -1,11 +1,7 @@
 /// <reference path="wheel.ts"/>
 
-<<<<<<< HEAD
 class Car implements Subject {
     public observers: Array<Observer> = new Array();
-=======
-class Car {
->>>>>>> origin/master
     public div: HTMLElement;
 
     public speed: number;
@@ -51,11 +47,6 @@ class Car {
         this.wheel1 = new Wheel(this.div, 20);
         this.wheel2 = new Wheel(this.div, 100);
 
-<<<<<<< HEAD
-        
-
-=======
->>>>>>> origin/master
         window.addEventListener("keydown", (e: KeyboardEvent) => this.onKeyDown(e));
 
         this._behavior = new Drive(this);
@@ -63,8 +54,6 @@ class Car {
 
     private onKeyDown(e: KeyboardEvent): void {
         console.log(e.key);
-        
-<<<<<<< HEAD
         
         // Een switch voor de toetsen. Spatie = springen, A = langzamer, D = sneller
         // Maakt gebruik van enumerations (enum/keys.ts)
@@ -86,20 +75,7 @@ class Car {
         }
     }
 
-    // het rijden (wordt standaard uitgevoerd)
-=======
-        if(e.key == ' ' && this.y == 220) {
-            this.jumpDirection = -3;
-            this.jumping();
-        } else if(e.key == 'a'){
-            this.slower();
-        } else if(e.key == 'd'){
-            this.faster();
-        }
-    }
-
     // het rennen (wordt standaard uitgevoerd)
->>>>>>> origin/master
     public driving(): void{
         this._behavior = new Drive(this);
     }
@@ -124,7 +100,6 @@ class Car {
         this._behavior = new Crash(this);
     }
 
-<<<<<<< HEAD
     public subscribe(o:Observer){
         this.observers.push(o);
     }
@@ -139,14 +114,11 @@ class Car {
        } 
     }
 
-=======
->>>>>>> origin/master
     public draw(): void {
 
         this._behavior.performBehavior();
 
         // Check collision functie
-<<<<<<< HEAD
         // Als er geen collision is, blijf dan de score optellen
         if(!Game.getInstance().checkCollision()){
             this.score += 0.0314;
@@ -166,14 +138,11 @@ class Car {
                 TweenLite.to(this.div, 2, {x:800, y: 200, rotation: 600});
             }*/
             
-
-=======
         if(!Game.getInstance().checkCollision()){
             this.score += 0.0314;
         }else{
             this._behavior = new Crash(this);
             this._behavior.performBehavior();
->>>>>>> origin/master
         }
 
         // Wanneer de speler uit het scherm gaat, laat het scherm Game Over zien met 0 punten
@@ -187,17 +156,12 @@ class Car {
             Game.getInstance().gameOver(0);
         }
 
-<<<<<<< HEAD
         // Score teller op het scherm
-=======
-        // Score teller
->>>>>>> origin/master
         document.getElementById("score").innerHTML = "Score: " + Math.floor(this.score);
 
         this.div.style.transform = "translate(" + this.x + "px," + this.y + "px)";
         this.wheel1.draw();
         this.wheel2.draw();
     } 
-
-
+}
 }

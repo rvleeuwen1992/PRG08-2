@@ -1,6 +1,5 @@
 /// <reference path="miscItems.ts" />
 
-<<<<<<< HEAD
 namespace Block{
     export class Block extends MiscItems {
 
@@ -24,7 +23,6 @@ namespace Block{
         }
     }
 }
-=======
 
 class Block extends MiscItems {
 
@@ -44,4 +42,3 @@ class Block extends MiscItems {
         this.height = 31;
     }
 }
->>>>>>> origin/master
