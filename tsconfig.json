@@ -1,0 +1,14 @@
+{
+    "compilerOptions": {
+        "sourceMap":  true,
+        "removeComments": true,
+        "target":"es5",
+        "out": "docs/js/main.js",
+        "noImplicitAny": true,
+        "noImplicitReturns": true
+    },
+    "exclude": [
+        "node_modules",
+        "docs"
+    ]
+}
