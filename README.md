@@ -49,4 +49,4 @@ Spelen kan via https://0845855.github.io/PRG08-2/
 
 ## UML
 
-![UML image](https://github.com/0845855/PRG08/blob/master/UML.png)
+![UML image](https://github.com/0845855/PRG08-2/blob/master/UML.png)
