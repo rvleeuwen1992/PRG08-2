@@ -48,31 +48,43 @@ class Car implements Subject {
         this.wheel2 = new Wheel(this.div, 100);
 
         window.addEventListener("keydown", (e: KeyboardEvent) => this.onKeyDown(e));
+        window.addEventListener("click", (e: MouseEvent) => this.onKeyDown(e));
 
         this._behavior = new Drive(this);
     }
 
-    private onKeyDown(e: KeyboardEvent): void {
-        console.log(e.key);
+    private onKeyDown(e: Event): void {
         
-        // Een switch voor de toetsen. Spatie = springen, A = langzamer, D = sneller
-        // Maakt gebruik van enumerations (enum/keys.ts)
-        switch(e.keyCode){
+        if(e instanceof KeyboardEvent){
+            // Een switch voor de toetsen. Spatie = springen, A = langzamer, D = sneller
+            // Maakt gebruik van enumerations (enum/keys.ts)
+            switch(e.keyCode){
 
-            case Keys.SPACE:
+                case Keys.SPACE:
+                    if(this.y == 220){
+                        this.jumpDirection = -3;
+                        this.jumping();
+                        this.notify();
+                    }
+                break;
+                case Keys.LEFT:
+                    this.slower();
+                break;
+                case Keys.RIGHT:
+                    this.faster();
+                break;
+            }
+
+            if(e instanceof MouseEvent){
                 if(this.y == 220){
                     this.jumpDirection = -3;
                     this.jumping();
                     this.notify();
                 }
-            break;
-            case Keys.LEFT:
-                this.slower();
-            break;
-            case Keys.RIGHT:
-                this.faster();
-            break;
+            }
         }
+        
+        
     }
 
     // het rennen (wordt standaard uitgevoerd)
