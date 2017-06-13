@@ -24,7 +24,7 @@ namespace Block{
     }
 }
 
-class Block extends MiscItems {
+/*class Block extends MiscItems {
 
     public x:number;
     public y:number;
@@ -41,4 +41,4 @@ class Block extends MiscItems {
         this.width = 32;
         this.height = 31;
     }
-}
+}*/
