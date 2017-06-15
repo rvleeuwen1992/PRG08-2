@@ -1,80 +1,8 @@
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = Object.setPrototypeOf ||
-        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-    return function (d, b) {
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-var Game = (function () {
-    function Game() {
-        var _this = this;
-        var container = document.getElementById("container");
-        this.car = new Car(container);
-        this.block = new Block.Block(container);
-        this.longblock = new LongBlock.Block(container);
-        this.coin = new Coin(container);
-        this.cloud = new Cloud(container, this.car);
-        requestAnimationFrame(function () { return _this.gameLoop(); });
-    }
-    Game.prototype.gameLoop = function () {
-        var _this = this;
-        this.car.draw();
-        this.block.draw();
-        this.longblock.draw();
-        this.coin.draw();
-        this.cloud.draw();
-        requestAnimationFrame(function () { return _this.gameLoop(); });
-    };
-    Game.prototype.checkCollision = function () {
-        if (this.car.x < this.block.x + this.block.width &&
-            this.car.x + this.car.width > this.block.x &&
-            this.car.y < this.block.y + this.block.height &&
-            this.car.height + this.car.y > this.block.y) {
-            this.gameOver(Math.floor(this.car.score));
-            this.car.score += 0;
-            return true;
-        }
-        if (this.car.x < this.longblock.x + this.longblock.width &&
-            this.car.x + this.car.width > this.longblock.x &&
-            this.car.y < this.longblock.y + this.longblock.height &&
-            this.car.height + this.car.y > this.longblock.y) {
-            this.gameOver(Math.floor(this.car.score));
-            this.car.score += 0;
-            return true;
-        }
-        if (this.car.x < this.coin.x + this.coin.width &&
-            this.car.x + this.car.width > this.coin.x &&
-            this.car.y < this.coin.y + this.coin.height &&
-            this.car.height + this.car.y > this.coin.y) {
-            this.car.score += 5;
-            this.coin.x = 1916;
-            return false;
-        }
-    };
-    Game.prototype.gameOver = function (score) {
-        console.log(score);
-        document.getElementById("score").remove();
-        document.getElementById("gameOver").innerHTML = "Game over! Score: " + score;
-        document.getElementById("plateau").classList.add("animationpaused");
-        document.getElementById("sky").classList.add("animationpaused");
-        this.block.speed = 0;
-        this.longblock.speed = 0;
-        this.coin.speed = 0;
-    };
-    Game.getInstance = function () {
-        if (!Game.instance) {
-            Game.instance = new Game();
-        }
-        return Game.instance;
-    };
-    return Game;
-}());
-window.addEventListener("load", function () {
-    var g = Game.getInstance();
-});
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+};
 var Crash = (function () {
     function Crash(c) {
         this.car = c;
@@ -156,6 +84,76 @@ var Keys;
     Keys[Keys["LEFT"] = 37] = "LEFT";
     Keys[Keys["RIGHT"] = 39] = "RIGHT";
 })(Keys || (Keys = {}));
+var Game = (function () {
+    function Game() {
+        var _this = this;
+        var container = document.getElementById("container");
+        this.car = new Car(container);
+        this.block = new Block.Block(container);
+        this.longblock = new LongBlock.Block(container);
+        this.coin = new Coin(container);
+        this.cloud = new Cloud(container, this.car);
+        this.block = new Block.Block(container);
+        this.longblock = new LongBlock.Block(container);
+        this.coin = new Coin(container);
+        requestAnimationFrame(function () { return _this.gameLoop(); });
+    }
+    Game.prototype.gameLoop = function () {
+        var _this = this;
+        this.car.draw();
+        this.block.draw();
+        this.longblock.draw();
+        this.coin.draw();
+        this.cloud.draw();
+        requestAnimationFrame(function () { return _this.gameLoop(); });
+    };
+    Game.prototype.checkCollision = function () {
+        if (this.car.x < this.block.x + this.block.width &&
+            this.car.x + this.car.width > this.block.x &&
+            this.car.y < this.block.y + this.block.height &&
+            this.car.height + this.car.y > this.block.y) {
+            this.gameOver(Math.floor(this.car.score));
+            this.car.score += 0;
+            return true;
+        }
+        if (this.car.x < this.longblock.x + this.longblock.width &&
+            this.car.x + this.car.width > this.longblock.x &&
+            this.car.y < this.longblock.y + this.longblock.height &&
+            this.car.height + this.car.y > this.longblock.y) {
+            this.gameOver(Math.floor(this.car.score));
+            this.car.score += 0;
+            return true;
+        }
+        if (this.car.x < this.coin.x + this.coin.width &&
+            this.car.x + this.car.width > this.coin.x &&
+            this.car.y < this.coin.y + this.coin.height &&
+            this.car.height + this.car.y > this.coin.y) {
+            this.car.score += 5;
+            this.coin.x = 1916;
+            return false;
+        }
+    };
+    Game.prototype.gameOver = function (score) {
+        console.log(score);
+        document.getElementById("score").remove();
+        document.getElementById("gameOver").innerHTML = "Game over! Score: " + score;
+        document.getElementById("plateau").classList.add("animationpaused");
+        document.getElementById("sky").classList.add("animationpaused");
+        this.block.speed = 0;
+        this.longblock.speed = 0;
+        this.coin.speed = 0;
+    };
+    Game.getInstance = function () {
+        if (!Game.instance) {
+            Game.instance = new Game();
+        }
+        return Game.instance;
+    };
+    return Game;
+}());
+window.addEventListener("load", function () {
+    var g = Game.getInstance();
+});
 var MiscItems = (function () {
     function MiscItems(item, parent) {
         this.div = document.createElement(item);
@@ -176,12 +174,11 @@ var Block;
     var Block = (function (_super) {
         __extends(Block, _super);
         function Block(parent) {
-            var _this = _super.call(this, "block", parent) || this;
-            _this.x = 800;
-            _this.y = 240;
-            _this.width = 32;
-            _this.height = 31;
-            return _this;
+            _super.call(this, "block", parent);
+            this.x = 800;
+            this.y = 240;
+            this.width = 32;
+            this.height = 31;
         }
         Block.prototype.draw = function () {
             _super.prototype.draw.call(this);
@@ -193,14 +190,13 @@ var Block;
 var Cloud = (function (_super) {
     __extends(Cloud, _super);
     function Cloud(parent, subject) {
-        var _this = _super.call(this, "cloud", parent) || this;
-        subject.subscribe(_this);
-        _this.x = 900;
-        _this.y = 20;
-        _this.width = 150;
-        _this.height = 57;
-        _this.speed = -1;
-        return _this;
+        _super.call(this, "cloud", parent);
+        subject.subscribe(this);
+        this.x = 900;
+        this.y = 20;
+        this.width = 150;
+        this.height = 57;
+        this.speed = -1;
     }
     Cloud.prototype.notify = function () {
         this.changeDirection();
@@ -221,12 +217,11 @@ var Cloud = (function (_super) {
 var Coin = (function (_super) {
     __extends(Coin, _super);
     function Coin(parent) {
-        var _this = _super.call(this, "coin", parent) || this;
-        _this.x = 700;
-        _this.y = 140;
-        _this.width = 32;
-        _this.height = 31;
-        return _this;
+        _super.call(this, "coin", parent);
+        this.x = 700;
+        this.y = 140;
+        this.width = 32;
+        this.height = 31;
     }
     Coin.prototype.draw = function () {
         _super.prototype.draw.call(this);
@@ -238,12 +233,11 @@ var LongBlock;
     var Block = (function (_super) {
         __extends(Block, _super);
         function Block(parent) {
-            var _this = _super.call(this, "long_block", parent) || this;
-            _this.x = 1200;
-            _this.y = 240;
-            _this.width = 64;
-            _this.height = 32;
-            return _this;
+            _super.call(this, "long_block", parent);
+            this.x = 1200;
+            this.y = 240;
+            this.width = 64;
+            this.height = 32;
         }
         Block.prototype.draw = function () {
             _super.prototype.draw.call(this);
@@ -283,6 +277,7 @@ var Car = (function () {
         this.wheel1 = new Wheel(this.div, 20);
         this.wheel2 = new Wheel(this.div, 100);
         window.addEventListener("keydown", function (e) { return _this.onKeyDown(e); });
+        window.addEventListener("click", function (e) { return _this.onKeyDown(e); });
         this._behavior = new Drive(this);
     }
     Object.defineProperty(Car.prototype, "behavior", {
@@ -296,21 +291,29 @@ var Car = (function () {
         configurable: true
     });
     Car.prototype.onKeyDown = function (e) {
-        console.log(e.key);
-        switch (e.keyCode) {
-            case Keys.SPACE:
+        if (e instanceof KeyboardEvent) {
+            switch (e.keyCode) {
+                case Keys.SPACE:
+                    if (this.y == 220) {
+                        this.jumpDirection = -3;
+                        this.jumping();
+                        this.notify();
+                    }
+                    break;
+                case Keys.LEFT:
+                    this.slower();
+                    break;
+                case Keys.RIGHT:
+                    this.faster();
+                    break;
+            }
+            if (e instanceof MouseEvent) {
                 if (this.y == 220) {
                     this.jumpDirection = -3;
                     this.jumping();
                     this.notify();
                 }
-                break;
-            case Keys.LEFT:
-                this.slower();
-                break;
-            case Keys.RIGHT:
-                this.faster();
-                break;
+            }
         }
     };
     Car.prototype.driving = function () {
@@ -348,18 +351,25 @@ var Car = (function () {
             this._behavior = new Crash(this);
             this._behavior.performBehavior();
             TweenLite.to(this.div, 2.5, { x: 800, y: 200, rotation: 600, });
+            if (!Game.getInstance().checkCollision()) {
+                this.score += 0.0314;
+            }
+            else {
+                this._behavior = new Crash(this);
+                this._behavior.performBehavior();
+            }
+            if (this.x >= 740) {
+                Game.getInstance().gameOver(0);
+            }
+            if (this.x <= -80) {
+                console.log(this.x);
+                Game.getInstance().gameOver(0);
+            }
+            document.getElementById("score").innerHTML = "Score: " + Math.floor(this.score);
+            this.div.style.transform = "translate(" + this.x + "px," + this.y + "px)";
+            this.wheel1.draw();
+            this.wheel2.draw();
         }
-        if (this.x >= 740) {
-            Game.getInstance().gameOver(0);
-        }
-        if (this.x <= -80) {
-            console.log(this.x);
-            Game.getInstance().gameOver(0);
-        }
-        document.getElementById("score").innerHTML = "Score: " + Math.floor(this.score);
-        this.div.style.transform = "translate(" + this.x + "px," + this.y + "px)";
-        this.wheel1.draw();
-        this.wheel2.draw();
     };
     return Car;
 }());
